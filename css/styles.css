@@ -37,7 +37,6 @@ input {
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
 button {
@@ -71,30 +70,15 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar {
-    margin: 20px auto;
-    text-align: center;
-    position: relative;
-}
-
-.search-bar input {
-    padding: 10px;
-    width: 300px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Filtros por categoría */
+/* Filtros por categoría como un grid */
 #categoryFilters {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajuste flexible del grid */
+    gap: 10px;
     margin-top: 10px;
-    flex-wrap: wrap;
 }
 
 #categoryFilters button {
-    margin: 5px;
     padding: 10px;
     background-color: #5cb85c;
     color: white;
@@ -102,6 +86,7 @@ button:hover {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    text-align: center;
 }
 
 #categoryFilters button:hover {
@@ -160,4 +145,19 @@ button:hover {
         width: 90%;
         margin: 10px 0;
     }
+}
+
+#viewCartButton {
+    margin: 20px;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#viewCartButton:hover {
+    background-color: #4cae4c;
 }
