@@ -28,20 +28,24 @@ function displayCartItems(products) {
     let totalPrice = 0;
 
     products.forEach(item => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('cart-item');
-        productCard.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
-            <p>${item.title}</p>
-            <span>Precio: $${item.price}</span>
-            <span>Cantidad: ${item.quantity}</span>
+        const productPrice = item.price; // Precio unitario
+        const quantity = item.quantity; // Cantidad
+        const totalItemPrice = productPrice * quantity; // Precio total por item
+
+        // Crear una fila en la tabla
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.title}</td>
+            <td>${quantity}</td>
+            <td>$${productPrice.toFixed(2)}</td>
+            <td>$${totalItemPrice.toFixed(2)}</td>
         `;
-        cartItemsContainer.appendChild(productCard);
+        cartItemsContainer.appendChild(row);
         
-        totalPrice += item.price * item.quantity; // Calcular precio total
+        totalPrice += totalItemPrice; // Calcular precio total
     });
 
-    totalPriceContainer.innerHTML = `<h3>Precio Total: $${totalPrice.toFixed(2)}</h3>`;
+    totalPriceContainer.innerHTML = `<h3>Precio Total Carrito: $${totalPrice.toFixed(2)}</h3>`;
 }
 
 // Manejar el botón para limpiar el carrito
